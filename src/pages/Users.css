@@ -1,0 +1,49 @@
+.table {
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
+    margin-top: -0.5rem;
+}
+
+.table> :not(caption)>*>* {
+    background-color: #1a1a27;
+    border-bottom: none;
+}
+
+.table>tbody>tr {
+    transition: all 0.3s ease;
+}
+
+.table>tbody>tr:hover {
+    background-color: #1E1E2D !important;
+}
+
+.table>tbody>tr>td {
+    vertical-align: middle;
+    padding: 1rem 0.75rem;
+}
+
+.badge {
+    padding: 0.5em 0.75em;
+    font-weight: 500;
+}
+
+.form-control {
+    background-color: #1a1a27 !important;
+    border-color: #1a1a27 !important;
+    color: white !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #1a1a27 !important;
+}
+
+.btn-dark {
+    background-color: #1a1a27;
+    border-color: #1a1a27;
+}
+
+.btn-dark:hover {
+    background-color: #151521;
+    border-color: #151521;
+}

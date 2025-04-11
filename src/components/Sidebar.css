@@ -1,0 +1,60 @@
+.sidebar {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    opacity: 0.8;
+    color: #92929F !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+    color: white !important;
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+    color: white !important;
+}
+
+.menu-section {
+    margin-bottom: 1rem;
+}
+
+.menu-section small {
+    color: #92929F !important;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.icon-box {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background-color: #151521 !important;
+}
+
+h2 {
+    color: #FFFFFF !important;
+    font-weight: 500;
+}
+
+.text-muted {
+    color: #92929F !important;
+}
