@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from './store/slices/authSlice';
@@ -14,7 +14,6 @@ import UserView from './pages/UserView';
 import AdminLogin from './pages/AdminLogin';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -34,6 +33,7 @@ function App() {
   // //   const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc0NDQ1NTg1MiwiZXhwIjoxNzQ0NDU5NDUyLCJpYXQiOjE3NDQ0NTU4NTJ9.0q_xJvs5dRve6Tj2N_57VlGAA9tyrXQWvoLmWzXJYcY';
   // //   dispatch(setCredentials({ accessToken }));
   // // }, [dispatch]);
+
 
   return (
     <BrowserRouter>

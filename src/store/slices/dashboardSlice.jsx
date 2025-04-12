@@ -13,7 +13,9 @@ export const fetchDashboardStats = createAsyncThunk(
     } catch (error) {
       const message = error.response?.data?.message || error.message || 'Dashboard verileri alınamadı';
       toast.error(message);
+      debugger;
       return thunkAPI.rejectWithValue(message);
+
     }
   }
 );

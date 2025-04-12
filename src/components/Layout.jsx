@@ -9,7 +9,7 @@ function Layout() {
     return (
         <div className="d-flex">
             <Sidebar />
-            <div className="flex-grow-1" style={{ backgroundColor: '#1E1E2D', minHeight: '100vh' }}>
+            <div className="flex-grow-1 pagee" style={{ backgroundColor: '#1E1E2D', minHeight: '100vh' }}>
                 <div className="p-4">
                     {isDashboard && <TopStats />}
                     <Outlet />

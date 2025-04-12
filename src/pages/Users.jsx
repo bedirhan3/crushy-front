@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers, deleteUser, toggleSelectUser, selectAllUsers, resetSelectedUsers, setFilteredUsers } from '../store/slices/generalSlice';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 function Users() {
     const dispatch = useDispatch();
@@ -298,12 +299,12 @@ function Users() {
                                                         </button>
                                                         <ul className="dropdown-menu dropdown-menu-dark">
                                                             <li>
-                                                                <a
+                                                                <Link
                                                                     className="dropdown-item"
-                                                                    href={`/user-view/${user.id}`}
+                                                                    to={`/user-view/${user.id}`}
                                                                 >
                                                                     View Profile
-                                                                </a>
+                                                                </Link>
                                                             </li>
                                                             <li><a className="dropdown-item" href="#edit">Edit User</a></li>
                                                             <li><a className="dropdown-item" href="#block">Block User</a></li>
