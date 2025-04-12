@@ -1,7 +1,18 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../store/slices/authSlice';
 import './Sidebar.css';
 
 function Sidebar() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleLogout = (e) => {
+        e.preventDefault(); // Sayfa yönlendirmesini engelle
+        dispatch(logout()); // Redux state'ini temizle
+        navigate('/login'); // Login sayfasına yönlendir
+    };
+
     return (
         <div className="sidebar" style={{ minWidth: '250px', minHeight: '100vh', backgroundColor: '#1a1a27' }}>
             <div className="p-3">
@@ -37,7 +48,7 @@ function Sidebar() {
                         <NavLink to="/help" className="nav-link text-white">
                             <i className="bi bi-question-circle me-2"></i> Help
                         </NavLink>
-                        <NavLink to="/logout" className="nav-link text-white">
+                        <NavLink to="#" className="nav-link text-white" onClick={handleLogout}>
                             <i className="bi bi-box-arrow-right me-2"></i> Logout
                         </NavLink>
                     </nav>

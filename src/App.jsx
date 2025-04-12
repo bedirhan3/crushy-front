@@ -11,18 +11,35 @@ import Subscriptions from './pages/Subscriptions';
 import Settings from './pages/Settings';
 import Help from './pages/Help';
 import UserView from './pages/UserView';
+import AdminLogin from './pages/AdminLogin';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+
+
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+
 function App() {
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc0MzkzMjg5MywiZXhwIjoxNzQzOTM2NDkzLCJpYXQiOjE3NDM5MzI4OTN9.iVJLt62albap4wQ-Yap77076Z3uugEH7PEHnF8HXcKQ';
-    dispatch(setCredentials({ accessToken }));
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+
+  // // useEffect(() => {
+  // //   const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc0NDQ1NTg1MiwiZXhwIjoxNzQ0NDU5NDUyLCJpYXQiOjE3NDQ0NTU4NTJ9.0q_xJvs5dRve6Tj2N_57VlGAA9tyrXQWvoLmWzXJYcY';
+  // //   dispatch(setCredentials({ accessToken }));
+  // // }, [dispatch]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<Users />} />

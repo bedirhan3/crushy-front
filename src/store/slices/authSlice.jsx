@@ -7,7 +7,7 @@ const token = localStorage.getItem('accessToken');
 
 // Async action creator - login
 export const login = createAsyncThunk(
-  'auth/login',
+  'auth/admin-login',
   async (credentials, thunkAPI) => {
     try {
       const response = await authService.login(credentials);
