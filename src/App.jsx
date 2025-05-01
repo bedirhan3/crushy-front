@@ -11,9 +11,11 @@ import Subscriptions from './pages/Subscriptions';
 import Settings from './pages/Settings';
 import Help from './pages/Help';
 import UserView from './pages/UserView';
+import EditUser from './pages/EditUser';
 import AdminLogin from './pages/AdminLogin';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import Home from './pages/Home.jsx';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -39,16 +41,20 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<AdminLogin />} />
-        <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Navigate to = "/" replace />} />
+        <Route path="/admin/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<Users />} />
-          <Route path="user-view/:id" element={<UserView />} />
+          <Route path="users/:id" element={<UserView />} />
+          <Route path="users/edit/:id" element={<EditUser />} />
           <Route path="chat-requests" element={<ChatRequests />} />
           <Route path="user-reports" element={<UserReports />} />
           <Route path="subscriptions" element={<Subscriptions />} />
           <Route path="settings" element={<Settings />} />
           <Route path="help" element={<Help />} />
+          <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

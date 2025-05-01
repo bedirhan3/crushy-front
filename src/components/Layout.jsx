@@ -4,7 +4,7 @@ import TopStats from './TopStats';
 
 function Layout() {
     const location = useLocation();
-    const isDashboard = location.pathname === '/' || location.pathname === '/dashboard';
+    const isDashboard = location.pathname === '/admin' || location.pathname === '/admin/dashboard' || location.pathname === '/admin/';
 
     return (
         <div className="d-flex">

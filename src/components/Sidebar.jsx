@@ -21,19 +21,19 @@ function Sidebar() {
                 <div className="menu-section">
                     <small className="text-muted">MENU</small>
                     <nav className="nav flex-column mt-2">
-                        <NavLink to="/dashboard" className="nav-link text-white">
+                        <NavLink to="dashboard" className="nav-link text-white">
                             <i className="bi bi-grid me-2"></i> Dashboard
                         </NavLink>
-                        <NavLink to="/users" className="nav-link text-white">
+                        <NavLink to="users" className="nav-link text-white">
                             <i className="bi bi-people me-2"></i> Users
                         </NavLink>
-                        <NavLink to="/chat-requests" className="nav-link text-white">
+                        <NavLink to="chat-requests" className="nav-link text-white">
                             <i className="bi bi-chat me-2"></i> Chat Requests
                         </NavLink>
-                        <NavLink to="/user-reports" className="nav-link text-white">
+                        <NavLink to="user-reports" className="nav-link text-white">
                             <i className="bi bi-file-text me-2"></i> User Reports
                         </NavLink>
-                        <NavLink to="/subscriptions" className="nav-link text-white">
+                        <NavLink to="subscriptions" className="nav-link text-white">
                             <i className="bi bi-star me-2"></i> Subscriptions
                         </NavLink>
                     </nav>

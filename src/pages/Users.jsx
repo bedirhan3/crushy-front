@@ -301,12 +301,19 @@ function Users() {
                                                             <li>
                                                                 <Link
                                                                     className="dropdown-item"
-                                                                    to={`/user-view/${user.id}`}
+                                                                    to={`/admin/users/${user.id}`}
                                                                 >
                                                                     View Profile
                                                                 </Link>
                                                             </li>
-                                                            <li><a className="dropdown-item" href="#edit">Edit User</a></li>
+                                                            <li>
+                                                                <Link
+                                                                    className="dropdown-item"
+                                                                    to={`/admin/users/edit/${user.id}`}
+                                                                >
+                                                                    Edit User
+                                                                </Link>
+                                                            </li>
                                                             <li><a className="dropdown-item" href="#block">Block User</a></li>
                                                             <li><hr className="dropdown-divider" /></li>
                                                             <li>

@@ -13,6 +13,7 @@ function UserView() {
     if (id) {
       dispatch(fetchUserById(id));
     }
+    console.log(currentUser);
   }, [id, dispatch]);
 
   if (isLoadingUser) {
@@ -31,7 +32,7 @@ function UserView() {
         <div className="card">
           <div className="card-body text-center">
             <h4 className="text-white mb-3">User not found</h4>
-            <Link to="/users" className="btn btn-primary">
+            <Link to="/admin/users" className="btn btn-primary">
               <i className="bi bi-arrow-left me-2"></i>
               Back to Users
             </Link>
@@ -43,7 +44,7 @@ function UserView() {
 
   // Engagement score badge rengi
   const getEngagementBadgeClass = (category) => {
-    switch(category) {
+    switch (category) {
       case 'High': return 'bg-success';
       case 'Medium': return 'bg-warning';
       case 'Low': return 'bg-danger';
@@ -54,8 +55,8 @@ function UserView() {
   // Abonelik badge rengi
   const getSubscriptionBadgeClass = (status, planName) => {
     if (status !== 'active') return 'bg-danger';
-    
-    switch(planName) {
+
+    switch (planName) {
       case 'Premium': return 'bg-warning';
       case 'EVO': return 'bg-success';
       case 'Basic': return 'bg-info';
@@ -67,7 +68,7 @@ function UserView() {
     <div className="container-fluid p-0">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h4 className="text-white mb-0">User Profile</h4>
-        <Link to="/users" className="btn btn-primary">
+        <Link to="/admin/users" className="btn btn-primary">
           <i className="bi bi-arrow-left me-2"></i>
           Back to Users
         </Link>
@@ -79,7 +80,7 @@ function UserView() {
           <div className="card h-100">
             <div className="card-body">
               <div className="text-center mb-4">
-                <div 
+                <div
                   className="mx-auto rounded-circle mb-3 position-relative"
                   style={{
                     width: '150px',
@@ -94,7 +95,7 @@ function UserView() {
                       <i className="bi bi-person text-white fs-1"></i>
                     </div>
                   )}
-                  
+
                   {currentUser.role === 'VerifiedUser' && (
                     <span className="position-absolute bottom-0 end-0 badge bg-primary rounded-circle p-2">
                       <i className="bi bi-patch-check-fill fs-5"></i>
@@ -103,22 +104,21 @@ function UserView() {
                 </div>
                 <h4 className="text-white mb-1">{currentUser.fullName}</h4>
                 <p className="text-muted mb-2">@{currentUser.username}</p>
-                <span className={`badge ${
-                  currentUser.role === 'Admin' ? 'bg-danger' :
+                <span className={`badge ${currentUser.role === 'Admin' ? 'bg-danger' :
                   currentUser.role === 'VerifiedUser' ? 'bg-success' : 'bg-secondary'
-                } mb-3`}>
+                  } mb-3`}>
                   {currentUser.role}
                 </span>
-                
+
                 <div className="d-flex justify-content-center gap-2 mb-3">
                   <button className="btn btn-sm btn-outline-danger">
                     <i className="bi bi-trash me-1"></i>
                     Delete
                   </button>
-                  <button className="btn btn-sm btn-outline-warning">
+                  <Link to={`/admin/users/edit/${currentUser.userId}`} className="btn btn-sm btn-outline-warning">
                     <i className="bi bi-pencil me-1"></i>
                     Edit
-                  </button>
+                  </Link>
                   <button className="btn btn-sm btn-outline-secondary">
                     <i className="bi bi-slash-circle me-1"></i>
                     Block
@@ -152,12 +152,12 @@ function UserView() {
                   <h6 className="text-white mb-2">Engagement Score</h6>
                   <div className="d-flex align-items-center">
                     <div className="progress flex-grow-1 bg-dark" style={{ height: '8px' }}>
-                      <div 
-                        className={`progress-bar ${getEngagementBadgeClass(currentUser.engagementScore.category)}`} 
-                        role="progressbar" 
-                        style={{ width: `${currentUser.engagementScore.overall}%` }} 
-                        aria-valuenow={currentUser.engagementScore.overall} 
-                        aria-valuemin="0" 
+                      <div
+                        className={`progress-bar ${getEngagementBadgeClass(currentUser.engagementScore.category)}`}
+                        role="progressbar"
+                        style={{ width: `${currentUser.engagementScore.overall}%` }}
+                        aria-valuenow={currentUser.engagementScore.overall}
+                        aria-valuemin="0"
                         aria-valuemax="100"
                       ></div>
                     </div>
@@ -185,7 +185,7 @@ function UserView() {
           <div className="card mb-4">
             <div className="card-body">
               <h5 className="text-white mb-3">Personal Information</h5>
-              
+
               <div className="row g-3 mb-4">
                 <div className="col-md-6">
                   <label className="text-muted small">Full Name</label>
@@ -214,7 +214,7 @@ function UserView() {
               </div>
 
               <h5 className="text-white mb-3">Activity Summary</h5>
-              
+
               <div className="row g-3 mb-4">
                 <div className="col-md-4">
                   <div className="card bg-dark bg-opacity-50">
