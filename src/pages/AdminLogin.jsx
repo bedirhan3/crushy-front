@@ -15,7 +15,7 @@ function AdminLogin() {
     const result = await dispatch(login({ username, password }));
     
     if (!result.error) {
-      navigate('/dashboard');
+      navigate('/admin');
     }
   };
 
